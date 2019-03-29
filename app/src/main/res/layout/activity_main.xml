@@ -9,10 +9,32 @@
 
 
 
-
+    <EditText
+        android:id="@+id/roomName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/keyName"
+        android:layout_alignRight="@+id/keyName"
+        android:layout_alignEnd="@id/keyName"
+        android:layout_marginBottom="20dp"
+        android:hint="Room Name"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/keyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/keyValue"
+        android:layout_alignRight="@+id/keyValue"
+        android:layout_alignEnd="@id/keyValue"
+        android:layout_marginBottom="20dp"
+        android:hint="Key Name"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/keyValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button"
@@ -22,6 +44,8 @@
         android:hint="Key Value"
         android:inputType="textPersonName" />
 
+
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
@@ -30,17 +54,9 @@
         android:layout_centerVertical="true"
         android:text="Appy" />
 
-    <EditText
-       android:id="@+id/editText2"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_above="@+id/editText"
-       android:layout_alignRight="@+id/editText"
-       android:layout_alignEnd="@id/editText"
-       android:layout_marginBottom="20dp"
-        android:hint="Key Name"
-       android:ems="10"
-       android:inputType="textPersonName" />
+
+
+
 
 
 

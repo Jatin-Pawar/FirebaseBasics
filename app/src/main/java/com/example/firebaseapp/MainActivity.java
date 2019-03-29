@@ -12,11 +12,13 @@ import com.firebase.client.Firebase;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText myEditText, myKeyValue;
+    EditText myKeyName, myKeyValue, myRoomName;
     Button myApplyBtn;
-    String myStringData, myKeyValueData;
+    String myKeyNameData, myKeyValueData, myRoomNameData;
 
     Firebase myFirebase;
+
+    int i = 1;
 
 
 
@@ -25,10 +27,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        myEditText = (EditText) findViewById(R.id.editText);
-        myKeyValue = (EditText) findViewById(R.id.editText2);
+        myKeyName = (EditText) findViewById(R.id.keyName);
+        myKeyValue = (EditText) findViewById(R.id.keyValue);
+        myRoomName = (EditText) findViewById(R.id.roomName);
 
         myApplyBtn = (Button) findViewById(R.id.button);
+
+
 
 
 
@@ -36,18 +41,26 @@ public class MainActivity extends AppCompatActivity {
 
         String DeviceId = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
 
-        myFirebase = new Firebase("https://fir-app-13aff.firebaseio.com/Users" + DeviceId);
+//        myFirebase = new Firebase("https://fir-app-13aff.firebaseio.com/Users" + DeviceId);
 
         myApplyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                myStringData = myEditText.getText().toString();
-                myKeyValueData = myKeyValue.getText().toString();
-                Firebase myNewChild = myFirebase.child(myKeyValueData);
-                myNewChild.setValue(myStringData);
+                myRoomNameData = myRoomName.getText().toString();
 
-                Toast.makeText(MainActivity.this, myKeyValueData +" is updated with "+ myStringData ,Toast.LENGTH_LONG).show();
+                myFirebase = new Firebase("https://fir-app-13aff.firebaseio.com/" + myRoomNameData + "/Element_" + i);
+                i=i+1;
+
+
+                myKeyNameData = myKeyName.getText().toString();
+                myKeyValueData = myKeyValue.getText().toString();
+                Firebase myNewChild = myFirebase.child("Id");
+                myNewChild.setValue(myKeyNameData);
+                Firebase myNewChild_2 = myFirebase.child("Type");
+                myNewChild_2.setValue(myKeyValueData);
+
+                Toast.makeText(MainActivity.this,  myKeyNameData+" is updated with "+ myKeyValueData ,Toast.LENGTH_LONG).show();
             }
         });
     }
